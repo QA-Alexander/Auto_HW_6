@@ -15,11 +15,11 @@ public class DashboardPage {
     private final ElementsCollection cards = $$(".list__item div");
     private final SelenideElement reloadButton = $("[data-test-id='action-reload']");
 
-    public DashboardPage () {
+    public DashboardPage() {
         heading.shouldBe(Condition.visible);
     }
 
-    public int getCardBalance (DataHelper.CardInfo cardInfo) {
+    public int getCardBalance(DataHelper.CardInfo cardInfo) {
         var text = getCard(cardInfo).getText();
         return extractBalance(text);
     }
@@ -46,7 +46,7 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public void checkCardBalance (DataHelper.CardInfo cardInfo, int expectedBalance) {
+    public void checkCardBalance(DataHelper.CardInfo cardInfo, int expectedBalance) {
         getCard(cardInfo).shouldBe(Condition.visible).should(Condition.text(balanceStart + expectedBalance + balanceFinish));
     }
 }
